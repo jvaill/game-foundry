@@ -1,0 +1,29 @@
+{
+  "name": "game-foundry",
+  "version": "0.0.1",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "typecheck": "npx tsc --noEmit",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest --environment=jsdom"
+  },
+  "dependencies": {
+    "three": "^0.174.0",
+    "tiny-typed-emitter": "^2.1.0"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.8",
+    "@types/node": "^22.13.10",
+    "@types/three": "^0.174.0",
+    "typescript": "^5.8.2",
+    "vite": "^5.0.10",
+    "vite-plugin-node-polyfills": "^0.23.0",
+    "vitest": "^3.0.8"
+  },
+  "license": "MIT"
+}

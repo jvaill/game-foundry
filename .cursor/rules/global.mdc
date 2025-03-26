@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Always run `npm run typecheck` at the project root after you're done.

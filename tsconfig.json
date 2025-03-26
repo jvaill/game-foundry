@@ -1,0 +1,13 @@
+{
+  "extends": "@tsconfig/recommended",
+  "compilerOptions": {
+    "types": ["vite/client"],
+    "noImplicitOverride": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@e/*": ["./src/engine/*"],
+      "@g/*": ["./src/game/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}
