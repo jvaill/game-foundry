@@ -1,27 +1,40 @@
 import { AssetManager, AssetType } from "@e/AssetManager";
 import { Component } from "@e/Component";
 import { Scene } from "@e/Scene";
-import { GLTF } from "three/examples/jsm/Addons.js";
+import { Object3D } from "three";
+import invariant from "tiny-invariant";
 
 export class CChessBoard extends Component {
   // @todo: Should be supplied by Game or World.
+  // @todo: Find a way to preload assets
   private assetManager: AssetManager = new AssetManager();
 
-  private board?: GLTF;
+  model: Object3D | null = null;
 
-  override async onAttachToScene(scene: Scene) {
-    // @todo: Find a way to preload assets
-    this.board = await this.assetManager.loadAsset({
-      url: "/game/assets/board.glb",
+  async loadBoardModel() {
+    const models = await this.assetManager.loadAsset({
+      url: "/game/assets/chess.glb",
       type: AssetType.MODEL,
     });
+    invariant(models, "Failed to load models");
+
+    const model = models.scene.getObjectByName("Board");
+    invariant(model, "Failed to find model");
+
+    return model;
+  }
+
+  override async onAttachToScene(scene: Scene) {
+    this.model = await this.loadBoardModel();
 
     // @todo: Better APIs for getting the Three scene?
-    scene.getThreeScene().add(this.board!.scene);
+    scene.getThreeScene().add(this.model);
   }
 
   override onDetachFromScene() {
-    // @todo: Do I have to dispose of the board materials and textures?
-    this.board!.scene.removeFromParent();
+    invariant(this.model, "Model not loaded");
+
+    // @todo: Do we have to dispose model materials and textures?
+    this.model.removeFromParent();
   }
 }

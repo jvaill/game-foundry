@@ -1,5 +1,5 @@
 import { Game } from "@e/Game";
-import { PlayChessScene } from "./scenes/PlayChessScene";
+import { GameScene } from "./scenes/GameScene";
 
 const domElement = document.getElementById("game");
 if (!domElement) {
@@ -11,7 +11,7 @@ const game = new Game({
 });
 
 // Create and attach our first-person scene
-const fpScene = new PlayChessScene();
+const fpScene = new GameScene();
 game.attachScene(fpScene);
 game.setActiveScene(fpScene);
 

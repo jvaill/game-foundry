@@ -1,4 +1,4 @@
-## The chess assets were downloaded from [VkChess.net](https://github.com/jpbruyere/VkChess.net/tree/master/data/models) and are originally licensed under the MIT License.
+## Chess assets licensed under MIT and downloaded from [VkChess.net](https://github.com/jpbruyere/VkChess.net/tree/master/data/models).
 
 MIT License
 
